@@ -20,9 +20,21 @@ npm run build
 
 ## Publishing
 
-Pushes to `main` build and publish the static site through GitHub Pages. In the repository settings, set Pages to use GitHub Actions. The custom domain is defined in `public/CNAME` as `norcalevruns.com`.
+Pushes to `main` build and publish the static site through GitHub Pages. Pages is configured to use GitHub Actions, and the custom domain is set to `norcalevruns.com`.
 
-When the Pages deployment is ready, update the domain DNS to the GitHub Pages records and enable HTTPS in the repository settings.
+### Domain cutover
+
+Remove the existing Cloudflare redirect to Heylo, then configure these DNS records:
+
+| Type | Name | Value |
+| --- | --- | --- |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `zakwinnick.github.io` |
+
+After DNS has propagated, confirm the domain check in GitHub Pages settings and enable HTTPS enforcement.
 
 ## Community destinations
 
