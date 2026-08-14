@@ -59,7 +59,7 @@ The logo appears as the primary identity. It is not recreated or altered. Suppor
 
 ## Technical approach
 
-- Astro 6 static output.
+- Astro 7 static output.
 - Plain CSS with semantic custom properties, no Tailwind and no component library.
 - GitHub Actions deployment to GitHub Pages.
 - `public/CNAME` contains `norcalevruns.com`.
@@ -80,4 +80,3 @@ The logo appears as the primary identity. It is not recreated or altered. Suppor
 - Desktop and mobile screenshots show no clipping, overlap, or horizontal scrolling.
 - Page metadata and structured data contain the final domain and community name.
 - The GitHub repository contains the complete source, deployment workflow, and domain file.
-

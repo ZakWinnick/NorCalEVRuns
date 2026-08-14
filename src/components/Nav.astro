@@ -1,0 +1,37 @@
+---
+const heyloUrl = 'https://heylo.group/norcalevruns';
+---
+
+<header class="site-header">
+  <div class="site-header__inner shell">
+    <a class="brand" href="/" aria-label="NorCal EV Runs home">
+      <img src="/assets/images/norcal-ev-runs-logo-128.webp" alt="" width="72" height="72" />
+      <span class="brand__name">NorCal EV Runs</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="/#runs">Runs</a>
+      <a href="/#experience">The experience</a>
+      <a href="/#membership">Membership</a>
+      <a href="/#safety">Safety</a>
+      <a class="button button--small" href={heyloUrl}>Join us</a>
+    </nav>
+
+    <details class="mobile-nav">
+      <summary>
+        <span>Menu</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </summary>
+      <nav aria-label="Mobile navigation">
+        <a href="/#runs">Runs</a>
+        <a href="/#experience">The experience</a>
+        <a href="/#membership">Membership</a>
+        <a href="/#safety">Safety</a>
+        <a href="https://www.instagram.com/norcalevruns/">Instagram</a>
+        <a class="button" href={heyloUrl}>Join us on Heylo</a>
+      </nav>
+    </details>
+  </div>
+</header>

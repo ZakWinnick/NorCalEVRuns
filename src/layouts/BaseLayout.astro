@@ -1,0 +1,81 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const {
+  title,
+  description,
+  image = '/assets/images/norcal-road-social.jpg',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(image, Astro.site);
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'NorCal EV Runs',
+  url: 'https://norcalevruns.com',
+  logo: 'https://norcalevruns.com/assets/images/norcal-ev-runs-logo.png',
+  description,
+  parentOrganization: {
+    '@type': 'Organization',
+    name: 'NorCal EVs',
+    url: 'https://norcalevs.org',
+  },
+  sameAs: [
+    'https://www.instagram.com/norcalevruns/',
+    'https://heylo.group/norcalevruns',
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#17351e" />
+    <link rel="canonical" href={canonical} />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/norcal-road-hero.webp"
+      imagesrcset="/assets/images/norcal-road-hero-960.webp 960w, /assets/images/norcal-road-hero.webp 1920w"
+      imagesizes="100vw"
+      type="image/webp"
+      fetchpriority="high"
+    />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/images/norcal-ev-runs-logo.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="NorCal EV Runs" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content="Electric vehicles following a redwood road above the Northern California fog" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <title>{title}</title>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Nav />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

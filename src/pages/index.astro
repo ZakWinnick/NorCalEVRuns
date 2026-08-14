@@ -1,0 +1,218 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const heyloUrl = 'https://heylo.group/norcalevruns';
+const instagramUrl = 'https://www.instagram.com/norcalevruns/';
+
+const routeRegions = ['Coast', 'Redwoods', 'Foothills', 'Sierra'];
+const experience = [
+  {
+    number: '01',
+    title: 'Meet',
+    copy: 'Start with names, route notes, and a quick driver briefing before the group rolls out.',
+  },
+  {
+    number: '02',
+    title: 'Drive',
+    copy: 'Settle into the road at a comfortable pace, with clear regroup points and no pressure to keep up.',
+  },
+  {
+    number: '03',
+    title: 'Charge',
+    copy: 'Use charging stops as part of the experience, with time to talk cars, routes, and the next stretch.',
+  },
+  {
+    number: '04',
+    title: 'Arrive',
+    copy: 'Finish somewhere worth going, from a mountain town to a coastal overlook or a great local stop.',
+  },
+];
+
+const benefits = [
+  '10% off every paid event',
+  'NorCal EV Runs sticker',
+  'Merchandise discounts when the shop launches',
+  'More support for better routes and event logistics',
+];
+---
+
+<BaseLayout
+  title="NorCal EV Runs | Scenic Group Drives for Every EV"
+  description="Scenic group drives, road trips, charging stops, and destination meetups for every EV across Northern California."
+>
+  <section class="hero" aria-labelledby="hero-title">
+    <img
+      class="hero__image"
+      src="/assets/images/norcal-road-hero.webp"
+      srcset="/assets/images/norcal-road-hero-960.webp 960w, /assets/images/norcal-road-hero.webp 1920w"
+      sizes="100vw"
+      alt="Three electric vehicles driving through Northern California redwoods above the fog"
+      width="1920"
+      height="1086"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="hero__shade"></div>
+    <div class="hero__route" aria-hidden="true">
+      <span class="hero__route-line"></span>
+      <span class="hero__waypoint hero__waypoint--one"></span>
+      <span class="hero__waypoint hero__waypoint--two"></span>
+    </div>
+
+    <div class="shell hero__content">
+      <p class="eyebrow eyebrow--light">Northern California · Every EV welcome</p>
+      <h1 id="hero-title">Northern California looks better <em>in motion.</em></h1>
+      <p class="hero__lede">Scenic group drives built around good roads, thoughtful stops, and the people you meet along the way.</p>
+      <div class="button-row">
+        <a class="button button--light" href={heyloUrl}>
+          See upcoming runs
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 6l4 4-4 4"></path></svg>
+        </a>
+        <a class="text-link text-link--light" href="#experience">How runs work</a>
+      </div>
+      <p class="hero__note"><span></span> A NorCal EVs community</p>
+    </div>
+
+    <div class="hero__coordinates" aria-hidden="true">
+      <span>38.5816° N</span>
+      <span>121.4944° W</span>
+    </div>
+  </section>
+
+  <section class="route-ribbon" aria-label="Places we explore">
+    <div class="shell route-ribbon__inner">
+      <p class="route-ribbon__label">Routes across NorCal</p>
+      <ol>
+        {routeRegions.map((region, index) => (
+          <li>
+            <span class="route-ribbon__dot" aria-hidden="true"></span>
+            <span>{region}</span>
+            {index < routeRegions.length - 1 && <span class="route-ribbon__line" aria-hidden="true"></span>}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="manifesto section shell" aria-labelledby="manifesto-title">
+    <div class="section-heading">
+      <p class="eyebrow">The open road, shared</p>
+      <h2 id="manifesto-title">The vehicle gets you there. The run makes it memorable.</h2>
+    </div>
+    <div class="manifesto__copy">
+      <p>NorCal EV Runs brings EV owners together for scenic drives, road trips, charging stops, and destination meetups across Northern California.</p>
+      <p>Bring a Tesla, Rivian, Lucid, Ford, Hyundai, Kia, BMW, or anything else powered by electrons. The badge does not matter. The road does.</p>
+    </div>
+  </section>
+
+  <section class="experience section" id="experience" aria-labelledby="experience-title">
+    <div class="shell">
+      <div class="section-heading section-heading--row">
+        <div>
+          <p class="eyebrow">The experience</p>
+          <h2 id="experience-title">A better way to spend a Saturday.</h2>
+        </div>
+        <p>Each run is thoughtfully planned, clearly communicated, and designed to feel easy from the first meetup to the final stop.</p>
+      </div>
+
+      <ol class="experience-grid">
+        {experience.map((step) => (
+          <li class="experience-card">
+            <span class="experience-card__number">{step.number}</span>
+            <span class="experience-card__marker" aria-hidden="true"></span>
+            <h3>{step.title}</h3>
+            <p>{step.copy}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="runs section shell" id="runs" aria-labelledby="runs-title">
+    <div class="runs-card">
+      <div class="runs-card__topline">
+        <p class="eyebrow eyebrow--light">The next waypoint</p>
+        <span class="status-pill"><span></span> Routes are being planned</span>
+      </div>
+      <div class="runs-card__body">
+        <div>
+          <h2 id="runs-title">Your next favorite road is waiting.</h2>
+          <p>Upcoming routes, dates, pricing, meeting points, and registration all live in Heylo, so you always see the current details.</p>
+        </div>
+        <a class="button button--light button--large" href={heyloUrl}>
+          See upcoming runs
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 6l4 4-4 4"></path></svg>
+        </a>
+      </div>
+      <div class="runs-card__terrain" aria-hidden="true">
+        <svg viewBox="0 0 1200 160" preserveAspectRatio="none">
+          <path d="M0 142C124 120 191 62 309 88c94 21 118 56 223 21 114-39 146-92 265-68 111 22 139 76 233 52 61-16 106-39 170-43v110H0Z"></path>
+          <path d="M0 154c142-29 216-57 334-40 112 16 163 32 271 1 92-26 148-34 247-10 116 28 208 18 348-21v76H0Z"></path>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="membership section" id="membership" aria-labelledby="membership-title">
+    <div class="shell membership__grid">
+      <div class="membership__intro">
+        <p class="eyebrow">Keep the wheels turning</p>
+        <h2 id="membership-title">Support more good roads.</h2>
+        <p>NorCal EV Runs is free to join. Supporting members help us plan stronger routes, cover the tools behind each run, and create more experiences across Northern California.</p>
+        <p class="membership__fineprint">All events are paid separately. Supporting members receive their discount when registering.</p>
+      </div>
+
+      <div class="membership-card">
+        <div class="membership-card__options">
+          <div>
+            <p>Monthly</p>
+            <strong><span>$</span>5</strong>
+            <small>per month</small>
+          </div>
+          <div class="membership-card__annual">
+            <span class="save-tag">Save $10</span>
+            <p>Yearly</p>
+            <strong><span>$</span>50</strong>
+            <small>per year</small>
+          </div>
+        </div>
+        <ul class="benefit-list">
+          {benefits.map((benefit) => (
+            <li>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10 3 3 7-7"></path></svg>
+              {benefit}
+            </li>
+          ))}
+        </ul>
+        <a class="button button--full" href={heyloUrl}>Become a supporting member</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="safety section shell" id="safety" aria-labelledby="safety-title">
+    <div class="safety__marker" aria-hidden="true">
+      <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34"></circle><path d="M40 20v24M40 55v1"></path></svg>
+    </div>
+    <div>
+      <p class="eyebrow">The most important route note</p>
+      <h2 id="safety-title">Runs, not races.</h2>
+    </div>
+    <div class="safety__copy">
+      <p>These are relaxed group drives on public roads. Every participant is expected to drive responsibly, follow the law, maintain a safe vehicle, and make decisions based on their own comfort and conditions.</p>
+      <p>Routes include planned regroup points, so there is never a reason to speed or take unnecessary risks to stay with the group.</p>
+    </div>
+  </section>
+
+  <section class="closing" aria-labelledby="closing-title">
+    <div class="closing__route" aria-hidden="true"></div>
+    <div class="shell closing__content">
+      <p class="eyebrow eyebrow--light">See you down the road</p>
+      <h2 id="closing-title">Good roads.<br />Good people.</h2>
+      <p>Bring your EV. We will bring the route.</p>
+      <div class="button-row button-row--center">
+        <a class="button button--light" href={heyloUrl}>Join us on Heylo</a>
+        <a class="text-link text-link--light" href={instagramUrl}>Follow on Instagram</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
